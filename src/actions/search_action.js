@@ -4,10 +4,10 @@
  * action after user click search button, used for getting artists from remote service
  */
 var Config = require('Config')
-export const SearchArtistByCountry = (country) => {
+export const SearchArtistByCountry = (country, page = 1) => {
     return dispatch => {
         try{
-            let url = Config.baseUrl + '?method=geo.gettopartists&country=' + country + '&api_key=' + Config.apiKey + '&format=' + Config.format
+            let url = Config.baseUrl + '?method=geo.gettopartists&country=' + country + '&api_key=' + Config.apiKey + '&format=' + Config.format + '&page=' + page
             return fetch(url)
                 .then(function(response){
                     console.log(response);
@@ -21,7 +21,7 @@ export const SearchArtistByCountry = (country) => {
                             
                             console.log('Successfully get artists ', data);
                             // 
-                            dispatch(AddArtists(data.topartists.artist));
+                            dispatch(AddArtists(data.topartists.artist, page, country));
                             
                             
                         })
@@ -32,20 +32,17 @@ export const SearchArtistByCountry = (country) => {
             console.log('request fail', err)
         }
     }
-    /*
-        return dispatch => {
-            dispatch(AddArtists([{name: 'RRRR', mbid: 'UUUUUUU-908908'}, {name: 'YYYYYRRRR', mbid: '4325346-UUUUUUU-908908'}]));
-        }
-    */
 }
 
 /**
  * action for adding artists list to store
  */
-export const AddArtists = ( artistList) => {
+export const AddArtists = ( artistList, page, country) => {
     return {
         type: 'ADD_ARTISTS',
-        artist: artistList
+        artists: artistList,
+        remotePageNumber: page,
+        country: country
     }
 }
 

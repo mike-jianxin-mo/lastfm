@@ -15,6 +15,12 @@ const MainContent = React.createClass({
             this.props.onItemSelected(name, mbid); 
     },
         
+
+    getMoreArtists(){
+        console.log('getMoreArtists ', this.props.country, this.props.remotePageNumber + 1)
+        this.props.onGetMoreArtits(this.props.country, this.props.remotePageNumber + 1);       
+    },
+      
     render() {
         return (
             <div>
@@ -22,7 +28,8 @@ const MainContent = React.createClass({
                                                 currentPage = {this.props.currentPage} 
                                                 onItemSelected = {this.handleClick} 
                                                 onOutOfPageRange = {this.props.onOutOfPageRange} 
-                                                onSwitchPage = {this.props.onSwitchPage} />: null }
+                                                onSwitchPage = {this.props.onSwitchPage}
+                                                onGetMoreArtits = {this.getMoreArtists} />: null }
                 { this.props.showDetails ?  <Details    details = { this.props.details }  
                                                         currentId = { this.props.currentId } 
                                                         onBackToList = {this.props.onBackToList} />: null }

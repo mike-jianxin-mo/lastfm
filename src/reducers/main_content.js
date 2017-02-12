@@ -6,10 +6,22 @@ const content = (state = {}, action) => {
     switch (action.type){
         case 'ADD_ARTISTS':
             console.log('BEFORE UPDATE ', state);
-            state.artists = action.artist
+            // let artists = state.artists
+            // artists.push(action.artists)
+            // artists.push(...state.artists);
+            // artists.push.apply(artists, action.artists)
+            // state.artists = action.artist
+            let artists = action.artists
+            let newArtists = []
+            for(var i=0; i < state.artists.length; i ++){
+                newArtists.push(state.artists[i]);
+            }
+            newArtists.push.apply(newArtists, action.artists)
             console.log('AFTER UPDATE ', state);
             return Object.assign({}, state, {
-                artist: action.artist
+                artists: newArtists,
+                remotePageNumber: action.remotePageNumber,
+                country: action.country
             })
 
         case 'SHOW_LIST':

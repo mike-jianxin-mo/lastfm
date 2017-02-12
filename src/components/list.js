@@ -3,17 +3,8 @@
  * artist list view section
  */
 import React, { PropTypes } from 'react'
-import Pagination from '../components/pagination'
 
-const calculatePageItemRange = ( artists, currentPage ) => {
-    console.log("PAGINATION CALCULATOR ")
-    let starPointer = 5 * (currentPage - 1)
-    let endPointer  = starPointer + 5
-    return (artists.length <= endPointer)? artists.slice(starPointer, endPointer): null    
-}
-
-const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitchPage }) => {
-    console.log('IN LISTS ', artists);
+const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitchPage, onGetMoreArtits }) => {
    
     if(artists){
     
@@ -56,6 +47,7 @@ const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitch
                                     )   
                                 })
                             }
+                            <li onClick = {() => onGetMoreArtits() }>  more >> </li>
                         </ul>
                     </div>
                 </div>

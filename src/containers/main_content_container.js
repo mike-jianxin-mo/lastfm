@@ -5,6 +5,7 @@
 import { connect } from 'react-redux'
 import MainContent from '../components/main_content'
 import { ShowItem, GetNewArtists, SwitchPage, BackToList, ShowLocalItem, SelectLoadedItem }  from '../actions/search_action'
+import { SearchArtistByCountry }  from '../actions/search_action'
 
 const mapStateToProps = (state) => {
   console.log('BEFORE START MAPPING ', state);
@@ -14,26 +15,31 @@ const mapStateToProps = (state) => {
       details: state.content.details,
       currentId: state.content.currentId,
       artists: state.content.artists,
-      currentPage: state.content.currentPage
+      currentPage: state.content.currentPage,
+      remotePageNumber: state.content.remotePageNumber,
+      country: state.content.country
    }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onItemSelected : (name, mbid) => {
+    onItemSelected: (name, mbid) => {
       dispatch(ShowItem(name, mbid));
     },
-    onSelectLoadedItem : (name, mbid) => {
+    onSelectLoadedItem: (name, mbid) => {
       dispatch(SelectLoadedItem(name, mbid));
     },
-    onOutOfPageRange : () => {
+    onOutOfPageRange: () => {
       dispatch(GetNewArtists())
     },
-    onSwitchPage : (pageNumber) => {
+    onSwitchPage: (pageNumber) => {
       dispatch(SwitchPage(pageNumber))
     },
-    onBackToList : () => {
+    onBackToList: () => {
       dispatch(BackToList())
+    },
+    onGetMoreArtits: (country, remotePageNumber) =>{
+      dispatch(SearchArtistByCountry(country, remotePageNumber))
     }
   }
 }
