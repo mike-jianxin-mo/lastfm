@@ -13,9 +13,9 @@ const Details = ({ details, currentId, onBackToList }) => {
             { currentId }  <br/>
             <ul>
                 {
-                    currentDetails.map( item => {
+                    currentDetails.map( (item, index) => {
                         return (
-                            <li value={item.mbid} key={item.mbid} onClick={() => onItemSelected(item.name, item.mbid)}>{item.name}</li>
+                            <li value={item.mbid} key={index} >{item.name}</li>
                         )
                     })
                 }
