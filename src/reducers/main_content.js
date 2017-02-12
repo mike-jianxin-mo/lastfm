@@ -21,12 +21,12 @@ const content = (state = {}, action) => {
             console.log('IN SHOW/HID', action);
 
             let details = state.details
-            details[action.artist.mbid] = action.artist 
+            details[action.mbid] = action.toptracks 
             return Object.assign({}, state, {
                 showDetails: true,
                 showList: false,
                 details : details,
-                currentId : action.artist.name
+                currentId : action.mbid
             })
         case 'SWITCH_PAGE':
             console.log('SWITCHING PAGE ... ', action);  

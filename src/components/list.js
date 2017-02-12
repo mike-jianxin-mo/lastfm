@@ -41,7 +41,7 @@ const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitch
                             {
                                     showArtists.map( item => {
                                         return (
-                                            <li value={item.mbid} key={item.mbid} onClick={() => onItemSelected(item.name)}>{item.name}</li>
+                                            <li value={item.mbid} key={item.mbid} onClick={() => onItemSelected(item.name, item.mbid)}>{item.name}</li>
                                         )
                                     })
                             }

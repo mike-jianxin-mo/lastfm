@@ -4,7 +4,7 @@
  */
 import { connect } from 'react-redux'
 import MainContent from '../components/main_content'
-import { ShowItem, GetNewArtists, SwitchPage }  from '../actions/search_action'
+import { ShowItem, GetNewArtists, SwitchPage, BackToList }  from '../actions/search_action'
 
 const mapStateToProps = (state) => {
   console.log('BEFORE START MAPPING ', state);
@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onItemSelected : (name) => {
-      dispatch(ShowItem(name));
+    onItemSelected : (name, mbid) => {
+      dispatch(ShowItem(name, mbid));
     },
     onOutOfPageRange : () => {
       dispatch(GetNewArtists())

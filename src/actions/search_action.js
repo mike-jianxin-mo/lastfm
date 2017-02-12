@@ -57,7 +57,7 @@ export const AddArtists = ( artistList) => {
 /**
  * action for getting artist details informations from remote service
  */
-export const ShowItem = (name) => {
+export const ShowItem = (name, mbid) => {
     /*
     return {
         type: 'SHOW_ARTIST',
@@ -65,7 +65,7 @@ export const ShowItem = (name) => {
     }
     */
     
-    let url = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + name + '&api_key=1abe7c7dfefac6f21af747c44c846861&format=json'
+    let url = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=' + name + '&api_key=1abe7c7dfefac6f21af747c44c846861&format=json'
     return dispatch => {
         try{
             return fetch(url)
@@ -80,7 +80,7 @@ export const ShowItem = (name) => {
                             
                             console.log('Successfully get artists details ', data);
                             // 
-                            dispatch(AddAndShowArtistDetails(data.artist));
+                            dispatch(AddAndShowArtistDetails(name, mbid, data.toptracks.track));
                             
                             
                         })
@@ -96,10 +96,12 @@ export const ShowItem = (name) => {
  * add artist information to store
  */
 export const AddAndShowArtistDetails = ( artist ) => {
+export const AddAndShowArtistDetails = ( name, mbid, toptracks ) => {
     return {
         type: 'ADD_AND_SHOW_ARTIST_DETAILS',
-        artist: artist
-        
+        mbid: mbid,
+        name: name,
+        toptracks: toptracks
     }
 }
 
