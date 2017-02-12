@@ -35,6 +35,14 @@ module.exports = {
         historyApiFallback: true,
         inline: true
     },
+    externals: {
+    'Config': 
+        JSON.stringify({
+            baseUrl: 'http://ws.audioscrobbler.com/2.0/',
+            apiKey: '1abe7c7dfefac6f21af747c44c846861',
+            format: 'json'
+        })
+    }, 
 
     plugins: [
         new CopyWebpackPlugin([

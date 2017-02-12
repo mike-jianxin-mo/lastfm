@@ -13,8 +13,7 @@ export const SearchArtistByCountry = (country) => {
 
     return dispatch => {
         try{
-            country = 'china'  // just for test
-            let url = 'http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=' + country + '&api_key=1abe7c7dfefac6f21af747c44c846861&format=json'
+            let url = Config.baseUrl + '?method=geo.gettopartists&country=' + country + '&api_key=' + Config.apiKey + '&format=' + Config.format
             return fetch(url)
                 .then(function(response){
                     console.log(response);
@@ -64,8 +63,7 @@ export const ShowItem = (name, mbid) => {
         id: mId
     }
     */
-    
-    let url = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=' + name + '&api_key=1abe7c7dfefac6f21af747c44c846861&format=json'
+    let url = Config.baseUrl + '?method=artist.gettoptracks&artist=' + name + '&api_key=' + Config.apiKey + '&format=' + Config.format
     return dispatch => {
         try{
             return fetch(url)
