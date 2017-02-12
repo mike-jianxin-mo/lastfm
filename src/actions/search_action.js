@@ -4,6 +4,12 @@
  * action after user click search button, used for getting artists from remote service
  */
 export const SearchArtistByCountry = (country) => {
+    /*
+    return {
+        type: 'SEARCH',
+        country: country
+    }
+    */
 
     return dispatch => {
         try{
@@ -31,6 +37,11 @@ export const SearchArtistByCountry = (country) => {
             console.log('request fail')
         }
     }
+    /*
+        return dispatch => {
+            dispatch(AddArtists([{name: 'RRRR', mbid: 'UUUUUUU-908908'}, {name: 'YYYYYRRRR', mbid: '4325346-UUUUUUU-908908'}]));
+        }
+    */
 }
 
 /**
@@ -47,6 +58,12 @@ export const AddArtists = ( artistList) => {
  * action for getting artist details informations from remote service
  */
 export const ShowItem = (name) => {
+    /*
+    return {
+        type: 'SHOW_ARTIST',
+        id: mId
+    }
+    */
     
     let url = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + name + '&api_key=1abe7c7dfefac6f21af747c44c846861&format=json'
     return dispatch => {
@@ -84,4 +101,14 @@ export const AddAndShowArtistDetails = ( artist ) => {
         artist: artist
         
     }
+}
+
+/**
+ * switch page action
+ */
+export const SwitchPage = (pageNumber) => {
+    return {
+        type: 'SWITCH_PAGE',
+        pageNumber: pageNumber
+    }    
 }

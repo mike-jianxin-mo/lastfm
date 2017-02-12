@@ -28,6 +28,11 @@ const content = (state = {}, action) => {
                 details : details,
                 currentId : action.artist.name
             })
+        case 'SWITCH_PAGE':
+            console.log('SWITCHING PAGE ... ', action);  
+            return Object.assign({}, state, {
+                currentPage: action.pageNumber
+            })   
         default:
             return state
     }        
