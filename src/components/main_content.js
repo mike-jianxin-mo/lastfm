@@ -17,7 +17,6 @@ const MainContent = React.createClass({
         
 
     getMoreArtists(){
-        console.log('getMoreArtists ', this.props.country, this.props.remotePageNumber + 1)
         this.props.onGetMoreArtits(this.props.country, this.props.remotePageNumber + 1);       
     },
       

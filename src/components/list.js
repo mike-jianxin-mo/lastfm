@@ -32,7 +32,6 @@ const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitch
                 <div>  
                     <div className='list'>
                         <ul>
-                            List is here 
                             {
                                     showArtists.map( item => {
 

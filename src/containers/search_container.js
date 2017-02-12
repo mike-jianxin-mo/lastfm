@@ -14,7 +14,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('before search action dispatch ');
   return {
     onSearchBtnClick : (searchCountry) => {
       dispatch(SearchArtistByCountry(searchCountry))

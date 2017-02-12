@@ -10,7 +10,6 @@ export const SearchArtistByCountry = (country, page = 1) => {
             let url = Config.baseUrl + '?method=geo.gettopartists&country=' + country + '&api_key=' + Config.apiKey + '&format=' + Config.format + '&page=' + page
             return fetch(url)
                 .then(function(response){
-                    console.log(response);
                     if (response){
                         if(response.status !== 200){
                             alert('Request fail, please try again later Status Code: ' + response.status);
@@ -18,8 +17,6 @@ export const SearchArtistByCountry = (country, page = 1) => {
                             return; 
                         }
                         response.json().then(function(data){ 
-                            
-                            console.log('Successfully get artists ', data);
                             
                             if(data.error)
                                 alert('Request fail, the return message is "' + data.message + '", the message code is [' + data.error + ']' )
@@ -58,7 +55,6 @@ export const ShowItem = (name, mbid) => {
         try{
             return fetch(url)
                 .then(function(response){
-                    console.log(response);
                     if (response){
                         if(response.status !== 200){
                             alert('Request fail, please try again later Status Code: ' + response.status);
@@ -67,8 +63,6 @@ export const ShowItem = (name, mbid) => {
                         }
                         response.json().then(function(data){ 
                             
-                            console.log('Successfully get artists details ', data);
-                            // 
                             dispatch(AddAndShowArtistDetails(name, mbid, data.toptracks.track));
                             
                             

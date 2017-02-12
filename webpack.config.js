@@ -4,7 +4,6 @@ var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    // devtool: 'eval-source-map',
     context: __dirname + '/src',
     entry:  './app.js', 
     output: {

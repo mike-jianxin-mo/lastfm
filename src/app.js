@@ -10,23 +10,11 @@ import artistSearchReducer from './reducers'
 import thunk from 'redux-thunk'
 import App from './components/app'
 
-let initVar =   {
-    apiKey : '',
-    sessionKey : '',
-    showList : true,
-    showDetails : false,
-    searchCountry : '',
-    list : [],
-    details : {}
-  };
-
 const initialState = {
-    apiKey : initVar.apiKey,
-    sessionKey : initVar.sessionKey,
+    apiKey : '',
     content : {showList: true, showDetails: false, artists: [], details: {}, currentId: '', currentPage: 1, remotePageNumber: 1, country: '' },
 };
 
-console.log(initialState);
 
 let store = createStore(artistSearchReducer, initialState, applyMiddleware(thunk))
 

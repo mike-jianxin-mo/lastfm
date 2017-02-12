@@ -5,7 +5,6 @@
 const content = (state = {}, action) => {
     switch (action.type){
         case 'ADD_ARTISTS':
-            console.log('BEFORE UPDATE ', state);
             // let artists = state.artists
             // artists.push(action.artists)
             // artists.push(...state.artists);
@@ -22,7 +21,6 @@ const content = (state = {}, action) => {
                 }
                 newArtists.push.apply(newArtists, action.artists)
             }
-            console.log('AFTER UPDATE ', state);
             return Object.assign({}, state, {
                 artists: newArtists,
                 remotePageNumber: action.remotePageNumber,
@@ -30,12 +28,10 @@ const content = (state = {}, action) => {
             })
 
         case 'SHOW_LIST':
-            console.log(state);
             state.showDetails = false
             state.showList = true 
             return state
         case 'ADD_AND_SHOW_ARTIST_DETAILS':
-            console.log('IN SHOW/HID', action);
 
             let details = state.details
             details[action.mbid] = action.toptracks 
@@ -53,7 +49,6 @@ const content = (state = {}, action) => {
                 currentId : action.mbid
             })
         case 'SWITCH_PAGE':
-            console.log('SWITCHING PAGE ... ', action);  
             return Object.assign({}, state, {
                 currentPage: action.pageNumber
             })   

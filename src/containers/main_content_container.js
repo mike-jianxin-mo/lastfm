@@ -8,7 +8,6 @@ import { ShowItem, GetNewArtists, SwitchPage, BackToList, ShowLocalItem, SelectL
 import { SearchArtistByCountry }  from '../actions/search_action'
 
 const mapStateToProps = (state) => {
-  console.log('BEFORE START MAPPING ', state);
   return {
       showList: state.content.showList,
       showDetails: state.content.showDetails,
