@@ -112,3 +112,13 @@ export const SwitchPage = (pageNumber) => {
         pageNumber: pageNumber
     }    
 }
+
+/**
+ * back to artists list action
+ */
+export const BackToList = () => {
+    return {
+        type: 'BACK_TO_LIST_PAGE'
+    }    
+}
+

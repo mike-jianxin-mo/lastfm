@@ -28,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSwitchPage : (pageNumber) => {
       dispatch(SwitchPage(pageNumber))
+    },
+    onBackToList : () => {
+      dispatch(BackToList())
     }
   }
 }

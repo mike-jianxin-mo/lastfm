@@ -33,6 +33,11 @@ const content = (state = {}, action) => {
             return Object.assign({}, state, {
                 currentPage: action.pageNumber
             })   
+        case 'BACK_TO_LIST_PAGE':
+            return Object.assign({}, state, {
+                showDetails: false,
+                showList: true
+            })
         default:
             return state
     }        
