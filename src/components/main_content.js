@@ -32,6 +32,7 @@ const MainContent = React.createClass({
                                                 onGetMoreArtits = {this.getMoreArtists} />: null }
                 { this.props.showDetails ?  <Details    details = { this.props.details }  
                                                         currentId = { this.props.currentId } 
+                                                        currentName = { this.props.currentName }
                                                         onBackToList = {this.props.onBackToList} />: null }
             </div>
         )

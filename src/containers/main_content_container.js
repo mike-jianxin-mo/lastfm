@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
       showDetails: state.content.showDetails,
       details: state.content.details,
       currentId: state.content.currentId,
+      currentName: state.content.currentName,
       artists: state.content.artists,
       currentPage: state.content.currentPage,
       remotePageNumber: state.content.remotePageNumber,

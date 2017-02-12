@@ -20,8 +20,11 @@ export const SearchArtistByCountry = (country, page = 1) => {
                         response.json().then(function(data){ 
                             
                             console.log('Successfully get artists ', data);
-                            // 
-                            dispatch(AddArtists(data.topartists.artist, page, country));
+                            
+                            if(data.error)
+                                alert('Request fail, the return message is "' + data.message + '", the message code is [' + data.error + ']' )
+                            else 
+                                dispatch(AddArtists(data.topartists.artist, page, country));
                             
                             
                         })

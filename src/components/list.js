@@ -5,11 +5,8 @@
 import React, { PropTypes } from 'react'
 
 let style = {
-  backgroundColor: '#CCC',
-  width: '20%',
-  height: '500px',
-  float: 'left'
-};
+    display: 'inline-block',
+}
 
 const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitchPage, onGetMoreArtits }) => {
    
@@ -38,23 +35,38 @@ const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitch
                             List is here 
                             {
                                     showArtists.map( item => {
+
+                                        let imageUrl = ''
+                                        if(item){
+                                            for(var i = 0; i < item.image.length; i++){
+                                                if(item.image[i].size ==="large"){
+                                                    imageUrl = item.image[i]['#text']
+                                                }
+                                            }
+                                            if(!imageUrl && item.image[i].length > 0)
+                                                imageUrl = item.image[0].url
+                                        }
+
                                         return (
-                                            <li value={item.mbid} key={item.mbid} onClick={() => onItemSelected(item.name, item.mbid)}>{item.name}</li>
+                                            <li value={item.mbid} key={item.mbid} >
+                                                <div className='brand-image'><img src={imageUrl}  onClick={() => onItemSelected(item.name, item.mbid)} /></div>
+                                                <div className='artist-name'>{item.name}</div>
+                                            </li>
                                         )
                                     })
                             }
                         </ul>   
                     </div>
-                    <div className='pagination' style={style}>
+                    <div className='pagination' >
                         <ul>
                             {
                                 pageNumbers.map( pNumber =>{
                                     return (
-                                        <li value={pNumber} key={pNumber} onClick = {() => onSwitchPage(pNumber) } > {pNumber} </li>
+                                        <li style={style} value={pNumber} key={pNumber} onClick = {() => onSwitchPage(pNumber) } >&nbsp; {pNumber}&nbsp; </li>
                                     )   
                                 })
                             }
-                            <li onClick = {() => onGetMoreArtits() }>  more >> </li>
+                            { pageNumbers.length ? <li onClick = {() => onGetMoreArtits() }> &nbsp;&nbsp;&nbsp; more >> </li>: null }
                         </ul>
                     </div>
                 </div>

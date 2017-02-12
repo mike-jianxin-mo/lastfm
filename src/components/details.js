@@ -4,13 +4,14 @@
  */
 import React, { PropTypes } from 'react'
 
-
-const Details = ({ details, currentId, onBackToList }) => {
+const Details = ({ details, currentId, onBackToList, currentName }) => {
     let currentDetails = details[currentId]
     return (  
         <div className='details'>
-            Details is here <br/>
-            { currentId }  <br/>
+            <div>Top traks of { currentName }<br/></div>
+            <div className='back2list' onClick = {onBackToList}>
+                 [ BACK TO LIST ]
+            </div> 
             <ul>
                 {
                     currentDetails.map( (item, index) => {
@@ -21,9 +22,7 @@ const Details = ({ details, currentId, onBackToList }) => {
                 }
             </ul>
             
-            <div onClick = {onBackToList}>
-                 [ BACK TO LIST ]
-            </div>               
+             
         </div>
     )
 }

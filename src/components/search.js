@@ -13,15 +13,17 @@ const Search = React.createClass({
         });
     },
     onClick: function() {
-        console.log(this.state.searchCountry);
-        // this.setState({ showList: !this.state.showList, showDetails: !this.state.showDetails });
-        this.props.onSearchBtnClick(this.state.searchCountry);
+        if(this.state && this.state.searchCountry)
+            this.props.onSearchBtnClick(this.state.searchCountry);
+        else 
+            alert('Input a country name please.');
     },
+    placeholder: 'please input country name ',
     render: function() {
         return (
             <div className='search'>
-                <input onChange={this.onSearchCountryChange} />
-                <input type="submit" value="Search" onClick={ this.onClick }/>
+                <input onChange={this.onSearchCountryChange} className='country' placeholder={this.placeholder} />
+                <input type="submit" value="Search" onClick={ this.onClick } className='button'/>
             </div>
         );
     }

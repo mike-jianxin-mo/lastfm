@@ -12,11 +12,16 @@ const content = (state = {}, action) => {
             // artists.push.apply(artists, action.artists)
             // state.artists = action.artist
             let artists = action.artists
+            
             let newArtists = []
-            for(var i=0; i < state.artists.length; i ++){
-                newArtists.push(state.artists[i]);
+            if(action.remotePageNumber == 1){
+                newArtists = action.artists
+            }else{
+                for(var i=0; i < state.artists.length; i ++){
+                    newArtists.push(state.artists[i]);
+                }
+                newArtists.push.apply(newArtists, action.artists)
             }
-            newArtists.push.apply(newArtists, action.artists)
             console.log('AFTER UPDATE ', state);
             return Object.assign({}, state, {
                 artists: newArtists,
@@ -38,7 +43,8 @@ const content = (state = {}, action) => {
                 showDetails: true,
                 showList: false,
                 details : details,
-                currentId : action.mbid
+                currentId : action.mbid,
+                currentName : action.name
             })
         case 'SHOW_ALREADY_LOADED_ITEM':
             return Object.assign({}, state, {
