@@ -28,6 +28,12 @@ const content = (state = {}, action) => {
                 details : details,
                 currentId : action.mbid
             })
+        case 'SHOW_ALREADY_LOADED_ITEM':
+            return Object.assign({}, state, {
+                showDetails: true,
+                showList: false,
+                currentId : action.mbid
+            })
         case 'SWITCH_PAGE':
             console.log('SWITCHING PAGE ... ', action);  
             return Object.assign({}, state, {

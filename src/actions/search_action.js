@@ -3,14 +3,8 @@
 /**
  * action after user click search button, used for getting artists from remote service
  */
+var Config = require('Config')
 export const SearchArtistByCountry = (country) => {
-    /*
-    return {
-        type: 'SEARCH',
-        country: country
-    }
-    */
-
     return dispatch => {
         try{
             let url = Config.baseUrl + '?method=geo.gettopartists&country=' + country + '&api_key=' + Config.apiKey + '&format=' + Config.format
@@ -19,6 +13,7 @@ export const SearchArtistByCountry = (country) => {
                     console.log(response);
                     if (response){
                         if(response.status !== 200){
+                            alert('Request fail, please try again later Status Code: ' + response.status);
                             console.log('Looks like there was a problem. Status Code: ' + response.status);
                             return; 
                         }
@@ -33,7 +28,8 @@ export const SearchArtistByCountry = (country) => {
                     }
                 })
         }catch(err){
-            console.log('request fail')
+            alert('Request fail, please try again later');
+            console.log('request fail', err)
         }
     }
     /*
@@ -57,12 +53,6 @@ export const AddArtists = ( artistList) => {
  * action for getting artist details informations from remote service
  */
 export const ShowItem = (name, mbid) => {
-    /*
-    return {
-        type: 'SHOW_ARTIST',
-        id: mId
-    }
-    */
     let url = Config.baseUrl + '?method=artist.gettoptracks&artist=' + name + '&api_key=' + Config.apiKey + '&format=' + Config.format
     return dispatch => {
         try{
@@ -71,6 +61,7 @@ export const ShowItem = (name, mbid) => {
                     console.log(response);
                     if (response){
                         if(response.status !== 200){
+                            alert('Request fail, please try again later Status Code: ' + response.status);
                             console.log('Looks like there was a problem. Status Code: ' + response.status);
                             return; 
                         }
@@ -85,6 +76,7 @@ export const ShowItem = (name, mbid) => {
                     }
                 })
         }catch(err){
+            alert('Request fail, please try again later');
             console.log('request fail')
         }
     }
@@ -121,3 +113,13 @@ export const BackToList = () => {
     }    
 }
 
+/**
+ * select already loaded item action
+ */
+export const SelectLoadedItem = (name, mbid) => {
+    return {
+        type: 'SHOW_ALREADY_LOADED_ITEM',
+        name: name,
+        mbid: mbid        
+    }
+}
