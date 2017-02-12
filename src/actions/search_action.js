@@ -95,7 +95,6 @@ export const ShowItem = (name, mbid) => {
 /**
  * add artist information to store
  */
-export const AddAndShowArtistDetails = ( artist ) => {
 export const AddAndShowArtistDetails = ( name, mbid, toptracks ) => {
     return {
         type: 'ADD_AND_SHOW_ARTIST_DETAILS',
