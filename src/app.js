@@ -23,8 +23,7 @@ let initVar =   {
 const initialState = {
     apiKey : initVar.apiKey,
     sessionKey : initVar.sessionKey,
-    // content : {showList: true, showDetails: false, artists: [{name:'testing', mbid:'testing'}], details: {test: {name:'testing'}}, currentId: 'test'},
-    content : {showList: true, showDetails: false, artists: [], details: {}, currentId: ''},
+    content : {showList: true, showDetails: false, artists: [], details: {}, currentId: '', currentPage: 1, remotePageNumber: 1, country: '' },
 };
 
 console.log(initialState);

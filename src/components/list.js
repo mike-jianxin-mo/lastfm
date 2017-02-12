@@ -4,6 +4,13 @@
  */
 import React, { PropTypes } from 'react'
 
+let style = {
+  backgroundColor: '#CCC',
+  width: '20%',
+  height: '500px',
+  float: 'left'
+};
+
 const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitchPage, onGetMoreArtits }) => {
    
     if(artists){
@@ -38,7 +45,7 @@ const List = ({ artists, onItemSelected, currentPage, onOutOfPageRange, onSwitch
                             }
                         </ul>   
                     </div>
-                    <div className='pagination'>
+                    <div className='pagination' style={style}>
                         <ul>
                             {
                                 pageNumbers.map( pNumber =>{
